@@ -47,7 +47,7 @@ margin-top: 30px;}
 }
 /* 1 */
 .slider_image{
-    background-image: url(/image/slider1.svg);
+    background-image: url(slider1.svg);
     width: 1073px;
     height: 431px;
     border-radius: 25px;
