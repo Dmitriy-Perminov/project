@@ -122,3 +122,6 @@ font-family: 'Inter';
 .appl{
     text-align: left;
 }
+.error{
+    color:red;
+}
