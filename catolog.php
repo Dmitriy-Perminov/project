@@ -46,6 +46,7 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
     <title>Document</title>
+    <link rel="icon" href="/image/apple.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -98,7 +99,7 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
             </nav>
             </form>
         </div>
-        </header>
+    </header>
 
 
 

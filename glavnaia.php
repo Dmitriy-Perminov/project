@@ -41,13 +41,13 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    --><title>Glavnaia</title>
+    <title>Glavnaia</title>
     <link rel="icon" href="/image/apple.ico" type="image/x-icon">
-    <link rel="stylesheet" href="glavnaia.css">
-    <link rel="stylesheet" href="categories.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="css/glavnaia.css">
+    <!--<link rel="stylesheet" href="categories.css">-->
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/categories.css">
+    <link rel="stylesheet" href="css/header.css">
     
     <!-- Подключаем CSS слайдера -->
     <link rel="stylesheet" href="image/itc-slider.css">
@@ -110,102 +110,122 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
         .itc-slider-2 .itc-slider__item {
           flex: 0 0 25%;
           max-width: 25%;
-          height: 350px;
+          height: 352px;
           display: flex;
           justify-content: center;
           align-items: center;
           color: rgba(255, 255, 255, 0.8);
           font-size: 5rem;
         }
-    
-        .itc-slider__item:nth-child(6) {
-          background-color: #7583ed;
-        }
-        .itc-slider__item:nth-child(7) {
-          background-color: #b772a8;
-        }
-        .itc-slider__item:nth-child(8) {
-          background-color: #b0fab3;
-        }
-        .itc-slider__item:nth-child(9) {
-          background-color: #e8a85f;
-        }
-        .itc-slider__item:nth-child(10) {
-          background-color: #e7f046;
-        }
-        .itc-slider__item:nth-child(11) {
-          background-color: #d46767;
-        }
-        .itc-slider__item:nth-child(12) {
-          background-color: #70def1;
-        }
-        .itc-slider__item:nth-child(13) {
-          background-color: #004502;
-        }
-        .itc-slider__item:nth-child(14) {
-          background-color: #25805e;
-        }
-        .itc-slider__item:nth-child(15) {
-          background-color: #1b0044;
-        }
       </style>
 </head>
 <body>
+    <header> 
+        <nav class="header_container header_top">
+            <div>
+                <img onclick="location.href='glavnaia.php'" class="logo_image cursor_pointer" src="image/JjRfzsSZ5gU 1.png">
+            </div>
+            <div class="header_text header_text_now"> <label class="cursor_pointer header_text1" onclick="location.href='glavnaia.php'">На главную</label></div>
+            <div class="header_text"><label class="cursor_pointer header_text1" onclick="location.href='aboutus.html'">О нас</label></div>
+            <div class="header_text"><label class="cursor_pointer header_text1" onclick="location.href='help.html#kontakt'">Контакты</label></div>
+            <div class="header_text"><label class="cursor_pointer header_text1" onclick="location.href='help.html'">Помощь</label></div>
+            <?php
+            if(($_SESSION['id'] == "") ){
+                echo '
+                <nav class="header_account_1">
+                    <a href="sign_in.php" class="enter_but cursor_pointer"><p class="enter_text">Вход</p></a>
+                    <a href="registration.php" class="enter_but cursor_pointer"><p class="enter_text">Регистрация</p></a>
+                </nav>
+                ';
+            }
+            else{
+                echo '<a href="Lich_cab.php" class="header_account header_account_2 hov_but">
+                <image class="header_account_image" src="image/Vector.png"></image>
+                <div class="header_account_text">Личный кабинет</div>
+                </a>';
+            }
+
+            ?>
+        </nav>
+        <div class="header_top">
+            <form action="search.php" method="post">
+            <nav class="header_container_lower">
+                <div class="text-field">
+                    <input class="search" name="search" type="text" placeholder="Я ищу...">
+                </div>
+                <button type="submit" class="search_button cursor_pointer centre hov_but">
+                    <img class="header_account_image" src="image/search.png">
+                    <div  value="Поиск" class="header_account_text cursor_pointer">Поиск</div>
+                </button>
+                <div onclick="location.href='pocket.php'" class="header_account cursor_pointer hov_but" tabindex="0">
+                    <img class="header_account_image" src="image/pocket.png">
+                    <label class="header_account_text cursor_pointer" >Корзина</label>
+                </div><!--
+                <div class="header_account">
+                    <img class="header_account_image" src="image/heart.png">
+                    <label class="header_account_text">&nbsp &nbsp Мои<br>желания
+                    </label>
+                </div>-->
+            </nav>
+            </form>
+        </div>
+    </header>
     <div class="telo">
         <div class="flex1">
             <div>
-                <nav onclick="check_cat() " class="cat_main">
+            <nav class="cat_cont">
+            <form name="formName" action="catolog.php" method="POST">
+                <nav onclick=" " class="cat_main cat_top_radius">
                     <nav>
                         <div class="line"></div>
                         <div class="line"></div>
                         <div class="line"></div>
                     </nav>
-                    <div id="arrow" class="arrow_close"></div>
+                    <div id="arrow" class="arrow_ope"></div>
                     <label class="cat_text_main">Категории</label>
                 </nav>
-                <nav id="cat">
-                    <div class="cat"><label class="cat_text">Молочные продукты</label></div>
-                    <div class="cat"><label class="cat_text">Мясо</label></div>
-                    <div class="cat"><label class="cat_text">Птица</label></div>
-                    <div class="cat"><label class="cat_text">Яйцо</label></div>
-                    <div class="cat"><label class="cat_text">Мясные продукты</label></div>
-                    <div class="cat"><label class="cat_text">Рыба</label></div>
-                    <div class="cat"><label class="cat_text">Майонез и соусы</label></div>
-                    <div class="cat"><label class="cat_text">Бакалея</label></div>
-                    <div class="cat"><label class="cat_text">Кофе и чай</label></div>
-                    <div class="cat"><label class="cat_text">Кондитерские изделия</label></div>
-                    <div class="cat"><label class="cat_text">Фрукты, овощи</label></div>
-                    <div class="cat"><label class="cat_text">Хлеб</label></div>
-                    <div class="cat"><label class="cat_text">Замороженные продукты</label></div>
-                    <div class="cat"><label class="cat_text">Консервы</label></div>
-                    <div class="cat"><label class="cat_text">Кулинария</label></div>
-                    <div class="cat"><label class="cat_text">Напитки</label></div>
+                <nav id="ca">
+                    <input type="submit" name="ones2" id="ones" value="Молочные продукты" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Мясо" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Мясные продукты" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Рыба" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Майонез и соусы" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Бакалея" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Кофе и чай" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Кондитерские изделия" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Фрукты и овощи" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Хлеб" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Замороженные продукты" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Консервы" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Кулинария" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Напитки" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Остальное" class="cat cat_text">
+                    <input type="submit" name="ones2" value="Все категории" class="cat cat_text cat_bottom_radius">
                 </nav>
-            
-                    <script src="categories.js">
-                    </script>
+            </form>
+        </nav>
             </div>
             <div>
                 <div class="container">
                 
                     <div class="itc-slider itc-slider-1" data-slider="itc-slider" data-loop="false">
-                      <div class="itc-slider__wrapper">
+                      <div class="itc-slider__wrapper cursor1">
                         <div class="itc-slider__items">
                           <div class="itc-slider__item">
                             <!-- Контент 1 слайда -->
                             <img src="/image/slider1.svg" alt="">
                           </div>
-                          <div class="itc-slider__item">
+                          <div class="itc-slider__item ">
                             <!-- Контент 2 слайда -->
                             <img src="/image/slider1.svg" alt="">
                           </div>
-                          <div class="itc-slider__item">
+                          <div class="itc-slider__item ">
                             <!-- Контент 3 слайда -->
                           </div>
-                          <div class="itc-slider__item">
+                          <div class="itc-slider__item ">
                             <!-- Контент 4 слайда -->
                           </div>
-                          <div class="itc-slider__item">
+                          <div class="itc-slider__item ">
                             <!-- Контент 5 слайда -->
                           </div>
                         </div>
@@ -220,92 +240,108 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
                           <div class="itc-slider__item">
                             <!-- Контент 1 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
+                                <img src="/image/sale1.svg" alt="Молочные продукты" class="img_size">
                                 <div class="sale_product_text">Молочные продукты</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 2 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale2.svg" alt="Мясо">
+                                <img src="/image/sale2.svg" alt="Мясо" class="img_size">
                                 <div class="sale_product_text">Мясо</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 3 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale3.svg" alt="Птица">
-                                <div class="sale_product_text">Птица</div>
+                                <img src="/image/sale3.jpg" alt="Мясные продукты" class="img_size">
+                                <div class="sale_product_text">Мясные продукты</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 4 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale4.svg" alt="Фрукты, овощи">
-                                <div class="sale_product_text">Фрукты, овощи</div>
+                                <img src="/image/sale6.jpg" alt="Рыба" class="img_size">
+                                <div class="sale_product_text">Рыба</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 5 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale5.svg" alt="Напитки">
-                                <div class="sale_product_text">Напитки</div>
+                                <img src="/image/sale7.png" alt="Майонез и соусы" class="img_size">
+                                <div class="sale_product_text">Майонез и соусы</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 6 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
-                                <div class="sale_product_text">Молочные продукты</div>
+                                <img src="/image/sale8.jpg" alt="Бакалея" class="img_size">
+                                <div class="sale_product_text">Бакалея</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 7 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
-                                <div class="sale_product_text">Молочные продукты</div>
+                                <img src="/image/sale9.jpg" alt="Кофе и чай" class="img_size">
+                                <div class="sale_product_text">Кофе и чай</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 8 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
-                                <div class="sale_product_text">Молочные продукты</div>
+                                <img src="/image/sale10.jpg" alt="Кондитерские изделия" class="img_size">
+                                <div class="sale_product_text">Кондитерские изделия</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 9 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
-                                <div class="sale_product_text">Молочные продукты</div>
+                                <img src="/image/sale4.svg" alt="Фрукты и овощи" class="img_size">
+                                <div class="sale_product_text">Фрукты и овощи</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 10 слайда -->
                             <div class="sale_product">
-                                <img src="/image/sale1.svg" alt="Молочные продукты">
-                                <div class="sale_product_text">Молочные продукты</div>
+                                <img src="/image/sale11.jpg" alt="Хлеб" class="img_size">
+                                <div class="sale_product_text">Хлеб</div>
                             </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 11 слайда -->
-                            11
+                            <div class="sale_product">
+                                <img src="/image/sale12.jpg" alt="Замороженные продукты" class="img_size">
+                                <div class="sale_product_text">Замороженные продукты</div>
+                            </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 12 слайда -->
-                            12
+                            <div class="sale_product">
+                                <img src="/image/sale13.jpg" alt="Консервы" class="img_size">
+                                <div class="sale_product_text">Консервы</div>
+                            </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 13 слайда -->
-                            13
+                            <div class="sale_product">
+                                <img src="/image/sale14.jpg" alt="Кулинария" class="img_size">
+                                <div class="sale_product_text">Кулинария</div>
+                            </div>
                           </div>
                           <div class="itc-slider__item">
                             <!-- Контент 14 слайда -->
-                            14
+                            <div class="sale_product">
+                                <img src="/image/sale5.svg" alt="Напитки" class="img_size">
+                                <div class="sale_product_text">Напитки</div>
+                            </div>
                           </div>
+                          
                           <div class="itc-slider__item">
-                            <!-- Контент 15 слайда -->
-                            15
+                             <!--Контент 15 слайда-->
+                             <div class="sale_product">
+                                <img src="/image/sale15.jpg" alt="Остальное" class="img_size">
+                                <div class="sale_product_text">Остальное</div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -412,12 +448,10 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
     </div>
     <footer>
         <div class="adaptivno">
-            <div>
-
-            </div>
+            <div></div>
             <div class="icona">
-                <a href="glavnaia.html"><img src="/image/footerapple.png" alt="FOODD icon"></a>
-                <div class="foot1">© foodd, 2023</div>
+                <a href="glavnaia.php"><img src="/image/footerapple.png" alt="FOODD icon"></a>
+                <div class="foot1">© FOODD, 2023</div>
             </div>
             <div>
                 <div class="foot2">Помощь</div>
@@ -432,10 +466,10 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
             </div>
             <div>
                 <div class="foot2">FOODD в соц сетях</div>
-                <a href="#" class="foot3">ВКонтакте</a>
-                <br><a href="#" class="foot3">Instagram</a>
-                <br><a href="#" class="foot3">Facebook</a>
-                <br><a href="#" class="foot3">Одноклассники</a>
+                <a href="https://vk.com" class="foot3">ВКонтакте</a>
+                <br><a href="https://www.instagram.com" class="foot3">Instagram</a>
+                <br><a href="https://facebook.com" class="foot3">Facebook</a>
+                <br><a href="https://ok.ru" class="foot3">Одноклассники</a>
             </div>
             <div>
                 <div class="foot2">Для СМИ</div>
@@ -443,8 +477,9 @@ if (!empty($_POST) && !isset($_POST['ones2'])) {
             </div>
             <div>
                 <div class="foot2">Правообладателям</div>
-                <a href="#" class="foot3">О  предъявлении претензий</a>
+                <a href="polz_sogl.php" class="foot3">О  предъявлении претензий</a>
             </div>
+            <div></div>
         </div>
         
     </footer>
